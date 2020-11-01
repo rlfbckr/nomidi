@@ -1,4 +1,5 @@
 #define _VERSION_ 0.02
+
 int segmentMax = 10;
 volatile int lastSegmentPos = 0;
 volatile int segmentPos = 0;
@@ -17,7 +18,7 @@ const float inputValueSmoothing = 0.2; // the smaller the smoother
 const float inputValueGain = 1.003;
 const float inputValueOffset = 0;
 const int intputReadDelay = 10;
-const int inputHysteresisMax = 3;
+const int inputHysteresisMax = 10;
 const int inputHysteresisMin = 1;
 const int ADDR_A = 2;
 const int ADDR_B = 3;
@@ -36,7 +37,8 @@ volatile int POT0_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 
 const int FADER_X = A0;
 const int FADER_INH = 6;
-volatile int FADER_VALUES_HYS[] = { inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax};
+volatile int FADER_HYS[] = { inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax };
+volatile long FADER_HYS_LAST_CHANGE[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 volatile int FADER_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int FADER_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};

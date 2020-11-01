@@ -7,6 +7,7 @@
 #include "nomidi.h"
 
 boolean DEBUG_OSC_MSG = false;
+
 IntervalTimer readInputsTimer;
 IntervalTimer updateDisplayTimer;
 IntervalTimer softPWMTimer;
@@ -28,7 +29,7 @@ static int incommingPort = 10013;
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("nomidi v");
+  Serial.println("NOMIDI v");
   Serial.println(  _VERSION_);
   analogReadResolution(12);
   for (int i = 0; i < 10; i++) {
