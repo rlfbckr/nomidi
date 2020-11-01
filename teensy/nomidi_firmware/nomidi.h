@@ -13,7 +13,11 @@ volatile int ledIntesity[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 volatile int softPWMtic = 0;
 volatile int softPWMres = 100;
 
-const float value_smoothing = 0.1;
+const float inputValueSmoothing = 0.4; // the smaller the smoother
+const float inputValueGain = 1.007;
+const float inputValueOffset = -0.3;
+const int intputReadDelay = 10;
+
 const int ADDR_A = 2;
 const int ADDR_B = 3;
 const int ADDR_C = 4;
