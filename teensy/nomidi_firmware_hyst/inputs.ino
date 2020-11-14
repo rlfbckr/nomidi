@@ -1,21 +1,46 @@
 
 void readInputs() {
   for (int i = 0; i < 10 ; i++) {
-    POT0_VALUES[i] = constrain(inputValueOffset + ((POT0_VALUES[i] * (1 - inputValueSmoothing)) + (mux_pot0.read(9 - i) * inputValueSmoothing) * inputValueGain), 0, 4095);
-    if (POT0_VALUES[i] <= 2) POT0_VALUES[i]  = 0;
+    // POT 0
+    int tmp_pot0 = map(constrain((mux_pot0.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
+    if (abs(tmp_pot0 - POT0_VALUES[i]) >= POT0_HYS[i]) {
+      POT0_VALUES[i] = tmp_pot0;
+      if (POT0_HYS[i] > inputHysteresisMin) {
+        POT0_HYS[i]--;
+        POT0_HYS_LAST_CHANGE[i] = millis();
+      }
+    }
+    if ((millis() - POT0_HYS_LAST_CHANGE[i]) > 100) {
+      if (POT0_HYS[i] < inputHysteresisMax) {
+        POT0_HYS[i]++;
+      }
+    }
 
-    POT1_VALUES[i] = constrain(inputValueOffset + ((POT1_VALUES[i] * (1 - inputValueSmoothing)) + (mux_pot1.read(9 - i) * inputValueSmoothing) * inputValueGain), 0, 4095);
-    if (POT1_VALUES[i] <= 2) POT1_VALUES[i]  = 0;
+    // POT 1
+    int tmp_pot1 = map(constrain((mux_pot1.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
+    if (abs(tmp_pot1 - POT0_VALUES[i]) >= POT1_HYS[i]) {
+      POT1_VALUES[i] = tmp_pot1;
+      if (POT0_HYS[i] > inputHysteresisMin) {
+        POT1_HYS[i]--;
+        POT1_HYS_LAST_CHANGE[i] = millis();
+      }
+    }
+    if ((millis() - POT1_HYS_LAST_CHANGE[i]) > 100) {
+      if (POT1_HYS[i] < inputHysteresisMax) {
+        POT1_HYS[i]++;
+      }
+    }
 
-    int tmp = map(constrain((mux_fader.read(9 - i) * inputValueGain), 4 , 4091), 4 , 4091, 0 , 4095);
-    if (abs(tmp - FADER_VALUES[i]) >= FADER_HYS[i]) {
-      FADER_VALUES[i] = tmp;
+    // FADER
+    int tmp_fader = map(constrain((mux_fader.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
+    if (abs(tmp_fader - FADER_VALUES[i]) >= FADER_HYS[i]) {
+      FADER_VALUES[i] = tmp_fader;
       if (FADER_HYS[i] > inputHysteresisMin) {
         FADER_HYS[i]--;
         FADER_HYS_LAST_CHANGE[i] = millis();
       }
     }
-    if ((millis() - FADER_HYS_LAST_CHANGE[i]) > 30) {
+    if ((millis() - FADER_HYS_LAST_CHANGE[i]) > 100) {
       if (FADER_HYS[i] < inputHysteresisMax) {
         FADER_HYS[i]++;
       }

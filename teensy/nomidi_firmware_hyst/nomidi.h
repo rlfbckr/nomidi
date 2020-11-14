@@ -1,4 +1,4 @@
-#define _VERSION_ 0.02
+#define _VERSION_ 0.03
 
 int segmentMax = 10;
 volatile int lastSegmentPos = 0;
@@ -16,9 +16,9 @@ volatile int softPWMres = 100;
 
 const float inputValueSmoothing = 0.2; // the smaller the smoother
 const float inputValueGain = 1.003;
-const float inputValueOffset = 0;
-const int intputReadDelay = 10;
-const int inputHysteresisMax = 10;
+const int inputValueLowCut = 3;
+const int inputValueHighCut = 4092;
+const int inputHysteresisMax = 8;
 const int inputHysteresisMin = 1;
 const int ADDR_A = 2;
 const int ADDR_B = 3;
@@ -27,21 +27,24 @@ const int ADDR_D = 5;
 
 const int POT1_X = A3;
 const int POT1_INH = 9;
-volatile int POT1_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int POT1_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
+volatile int POT1_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
+volatile int POT1_HYS[] = { inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax };
+volatile long POT1_HYS_LAST_CHANGE[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 const int POT0_X = A2;
 const int POT0_INH = 8;
-volatile int POT0_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int POT0_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
+volatile int POT0_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
+volatile int POT0_HYS[] = { inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax };
+volatile long POT0_HYS_LAST_CHANGE[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 const int FADER_X = A0;
 const int FADER_INH = 6;
+volatile int FADER_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
+volatile int FADER_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int FADER_HYS[] = { inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax };
 volatile long FADER_HYS_LAST_CHANGE[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-volatile int FADER_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
-volatile int FADER_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 
 const int BUTTON0_X = 15;
 const int BUTTON0_INH = 7;
