@@ -16,8 +16,10 @@ void readInputs() {
         POT0_HYS[i]++;
       }
     }
+  }
 
-    // delayMicroseconds(20);
+  delayMicroseconds(20);
+  for (int i = 0; i < 10 ; i++) {
     // POT 1
     int tmp_pot1 = map(constrain((mux_pot1.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
     if (abs(tmp_pot1 - POT0_VALUES[i]) >= POT1_HYS[i]) {
@@ -32,12 +34,12 @@ void readInputs() {
         POT1_HYS[i]++;
       }
     }
-    //  delayMicroseconds(20);
-
+  }
+  delayMicroseconds(20);
+  for (int i = 0; i <10 ; i++) {
     // FADER
     int tmp_fader = map(constrain((mux_fader.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
-    Serial.print(tmp_fader);
-    Serial.print(" ");
+   
 
 
     if (abs(tmp_fader - FADER_VALUES[i]) >= FADER_HYS[i]) {
@@ -52,8 +54,11 @@ void readInputs() {
         FADER_HYS[i]++;
       }
     }
-    // delayMicroseconds(10);
-
+    
+  }
+   // Serial.println();
+  delayMicroseconds(10);
+  for (int i = 0; i < 10 ; i++) {
     if (mux_button0.read(9 - i) > 10) {
       BUTTON0_VALUES[i] = 1;
     } else {
@@ -73,9 +78,10 @@ void readInputs() {
     } else {
       BUTTON1_VALUES[i] = 0;
     }
-    //delayMicroseconds(10);
   }
-  Serial.println();
+
+  delayMicroseconds(10);
+
 
   //readinputtick++;
 }

@@ -9,7 +9,8 @@
 */
 
 
-#include "Type4067Mux.h"
+
+#include "MUX74HC4067.h"
 #include "nomidi.h"
 
 boolean DEBUG_OSC_MSG = false;
@@ -19,11 +20,18 @@ IntervalTimer updateDisplayTimer;
 IntervalTimer softPWMTimer;
 Chrono sendOSC;
 Chrono readInputsChrono;
-Type4067Mux mux_pot1(POT1_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, POT1_INH);
-Type4067Mux mux_pot0(POT0_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, POT0_INH);
-Type4067Mux mux_fader(FADER_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, FADER_INH);
-Type4067Mux mux_button0(BUTTON0_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, BUTTON0_INH);
-Type4067Mux mux_button1(BUTTON1_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, BUTTON1_INH);
+
+MUX74HC4067 mux_pot1(POT1_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+MUX74HC4067 mux_pot0(POT0_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+MUX74HC4067 mux_fader(FADER_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+MUX74HC4067 mux_button0(BUTTON0_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+MUX74HC4067 mux_button1(BUTTON1_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+
+//Type4067Mux mux_pot1(POT1_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, POT1_INH);
+//Type4067Mux mux_pot0(POT0_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, POT0_INH);
+//Type4067Mux mux_fader(FADER_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, FADER_INH);
+//Type4067Mux mux_button0(BUTTON0_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, BUTTON0_INH);
+//Type4067Mux mux_button1(BUTTON1_X, INPUT, ANALOG, ADDR_A, ADDR_B, ADDR_C, ADDR_D, BUTTON1_INH);
 
 EthernetUDP Udp;
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFC, 0x88};
@@ -38,6 +46,12 @@ void setup() {
   Serial.print("NOMIDI v");
   Serial.println(  _VERSION_);
   analogReadResolution(12);
+
+  mux_pot1.signalPin(POT1_X, INPUT, ANALOG);
+  mux_pot0.signalPin(POT0_X, INPUT, ANALOG);
+  mux_fader.signalPin(FADER_X, INPUT, ANALOG);
+  mux_button0.signalPin(BUTTON0_X, INPUT, ANALOG);
+  mux_button1.signalPin(BUTTON1_X, INPUT, ANALOG);
   for (int i = 0; i < 10; i++) {
     pinMode(segCathodePins[i], OUTPUT);
     digitalWrite(segCathodePins[i], 0);
@@ -45,8 +59,8 @@ void setup() {
     digitalWrite(ledPins[i], 0);
 
   }
-  pinMode(BUTTON0_X, INPUT);
-  pinMode(BUTTON1_X, INPUT);
+ // pinMode(BUTTON0_X, INPUT);
+  //pinMode(BUTTON1_X, INPUT);
   for (int i = 0; i < 8; i++) {
     pinMode(segAnodePins[i], OUTPUT);
     digitalWrite(segAnodePins, 0);
@@ -70,8 +84,9 @@ void loop() {
   }
 
   if (readInputsChrono.hasPassed(10) ) {
-  readInputsChrono.restart();
+    readInputsChrono.restart();
     readInputs();
+
   }
   if (sendOSC.hasPassed(30) ) {
     sendOSC.restart();
