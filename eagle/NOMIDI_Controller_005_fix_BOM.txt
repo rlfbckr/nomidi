@@ -1,0 +1,137 @@
+Partlist exported from C:/local/projekte/nomidi/eagle/NOMIDI_Controller_005_fix.sch at 2021-03-17 19:26
+
+Part Value              Device             Package     Description                       MF MPN      OC_FARNELL OC_NEWARK POPULARITY SPICEPREFIX
+D0                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D1                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D2                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D3                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D4                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D5                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D6                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D7                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D8                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+D9                      7SEG-CK            7SEG-13     7-segment DISPLAY                                                  3                     
+IC1  4067D              4067D              SO24W       16-channel ANALOG MULTIPLEXER                                      0                     
+IC2  4067D              4067D              SO24W       16-channel ANALOG MULTIPLEXER                                      0                     
+IC3  4067D              4067D              SO24W       16-channel ANALOG MULTIPLEXER                                      0                     
+IC4  4067D              4067D              SO24W       16-channel ANALOG MULTIPLEXER                                      0                     
+IC5  4067D              4067D              SO24W       16-channel ANALOG MULTIPLEXER                                      0                     
+LED0                    LED3MM             LED3MM      LED                                                                97                    
+LED1                    LED3MM             LED3MM      LED                                                                97                    
+LED2                    LED3MM             LED3MM      LED                                                                97                    
+LED3                    LED3MM             LED3MM      LED                                                                97                    
+LED4                    LED3MM             LED3MM      LED                                                                97                    
+LED5                    LED3MM             LED3MM      LED                                                                97                    
+LED6                    LED3MM             LED3MM      LED                                                                97                    
+LED7                    LED3MM             LED3MM      LED                                                                97                    
+LED8                    LED3MM             LED3MM      LED                                                                97                    
+LED9                    LED3MM             LED3MM      LED                                                                97                    
+M0   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+M1   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+MS0                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS1                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS2                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS3                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS4                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS5                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS6                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS7                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS8                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+MS9                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+P0_0 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_1 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_2 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_3 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_4 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_5 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_6 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_7 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_8 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P0_9 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_0 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_1 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_2 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_3 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_4 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_5 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_6 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_7 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_8 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+P1_9 US-EVUF3A          US-EVUF3A          EVUF        9 mm Square Rotary Potentiometers                                  0                     
+R1   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R2   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R3   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R4   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R5   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R6   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R7   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R8   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R9   10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R10  10K                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R11  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R12  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R13  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R14  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R15  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R16  1 OHM              R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R17  1 OHM              R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R18                     R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R19  1 OHM              R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R20  1 OHM              R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R21                     R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R22  1 OHM              R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R23  1 OHM              R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R24  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R25  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R26  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R27  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R28  4k7                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R29  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R30  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R31  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R32  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R33  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R34  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R35  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R36  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R37  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R38  10k                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R39  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R40  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R41  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R42  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R43  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R44  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R45  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R46  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R47  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+R48  220                R-EU_0207/7        0207/7      RESISTOR, European symbol                                          46         R          
+S0   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+S1   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+S2   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+S3   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+S4   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+S5   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+S6   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+S7   SLIDEPOT-ALPS-60MM SLIDEPOT-ALPS-60MM RS6011SP600                                                                                          
+SW0                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW1                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW2                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW3                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW4                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW5                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW6                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW7                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW8                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+SW9                     10-XX              B3F-10XX    OMRON SWITCH                         B3F-1000 176432     36M3542   72                    
+T1   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T2   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T3   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T4   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T5   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T6   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T7   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T8   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T9   BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+T10  BC547              BC547              TO92        NPN TRANSISTOR                                                     0                     
+U$1  TEENSY41           TEENSY41           TEENSY41                                                                                             
