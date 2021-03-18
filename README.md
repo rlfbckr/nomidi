@@ -14,7 +14,7 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
   - 10 x 2 pushbuttons
   - 10 x 1 slider (potentiometer 6mm ALPS)
 * outputs: 
-  - 10 x 1 seven-segemnt element (13,5mm)
+  - 10 x 1 seven-segment element (13,5mm)
   - 10 x 1 white led (3mm)
 
 ## Interface
