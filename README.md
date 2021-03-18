@@ -1,4 +1,4 @@
-# NOMID
+# NOMIDI
 [OSC](http://opensoundcontrol.org/) based performance controller
 
 ## control elements
