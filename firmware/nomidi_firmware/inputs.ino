@@ -56,10 +56,10 @@ void readInputs() {
     }
   }
   delayMicroseconds(20);
-  for (int i = 0; i <10 ; i++) {
+  for (int i = 0; i < 10 ; i++) {
     // FADER
     int tmp_fader = map(constrain((mux_fader.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
-   
+
 
 
     if (abs(tmp_fader - FADER_VALUES[i]) >= FADER_HYS[i]) {
@@ -74,34 +74,61 @@ void readInputs() {
         FADER_HYS[i]++;
       }
     }
-    
+
   }
-   // Serial.println();
+  // Serial.println();
   delayMicroseconds(10);
+
   for (int i = 0; i < 10 ; i++) {
+    // BUTTON0_PUSHTIME[i] = 0;
+    //  BUTTON1_PUSHTIME[i] = 0;
+  }
+  for (int i = 0; i < 10 ; i++) {
+    BUTTON1_VALUES_LAST[i] = BUTTON1_VALUES[i];
+    BUTTON0_VALUES_LAST[i] = BUTTON0_VALUES[i];
     if (mux_button0.read(9 - i) > 10) {
       BUTTON0_VALUES[i] = 1;
     } else {
       BUTTON0_VALUES[i] = 0;
     }
-    /*
-      if (i == 0) {
-      Serial.print(i);
-      Serial.print(" ");
-      Serial.print(mux_button0.read(9 - i));
-      Serial.print(" ");
-      Serial.println(mux_button1.read(9 - i));
-      }
-    */
+
     if (mux_button1.read(9 - i) > 10) {
       BUTTON1_VALUES[i] = 1;
     } else {
       BUTTON1_VALUES[i] = 0;
     }
+
+    if (BUTTON0_VALUES_LAST[i] == 0 && BUTTON0_VALUES[i] == 1) {
+      BUTTON0_PUSHTIME_START[i] = millis();
+    }
+
+    if (BUTTON1_VALUES_LAST[i] == 0 && BUTTON1_VALUES[i] == 1) {
+      BUTTON1_PUSHTIME_START[i] = millis();
+    }
+
+    if (BUTTON0_VALUES_LAST[i] == 1 && BUTTON0_VALUES[i] == 0) {
+      Serial.print("BUTTON0_PUSHTIME[");
+      Serial.print( i );
+      Serial.print("] = ");
+      BUTTON0_PUSHTIME[i] = millis() - BUTTON0_PUSHTIME_START[i];
+      Serial.println(BUTTON0_PUSHTIME[i]);
+    }
+
+    if (BUTTON1_VALUES_LAST[i] == 1 && BUTTON1_VALUES[i] == 0) {
+      Serial.print("BUTTON1_PUSHTIME[");
+      Serial.print( i );
+      Serial.print("] = ");
+      BUTTON1_PUSHTIME[i] = millis() - BUTTON1_PUSHTIME_START[i];
+      Serial.println(BUTTON1_PUSHTIME[i]);
+    }
+  }
+
+  if (BUTTON0_PUSHTIME[0] > 2000 && BUTTON0_PUSHTIME[9] > 2000) {
+    Serial.println(" C O N F I G   M*O*D*E !!!");
+    BUTTON0_PUSHTIME[0] = 0;
+    BUTTON0_PUSHTIME[9] = 0;
+    _SETUPMODE_ = !_SETUPMODE_;
   }
 
   delayMicroseconds(10);
-
-
-  //readinputtick++;
 }

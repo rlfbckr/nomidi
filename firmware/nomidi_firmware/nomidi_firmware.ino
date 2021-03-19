@@ -89,6 +89,9 @@ void setup() {
 }
 
 void loop() {
+  if (_SETUPMODE_) {
+    setupMode();
+  }
   if (readInputsChrono.hasPassed(10) ) {
     readInputsChrono.restart();
     readInputs();

@@ -21,6 +21,8 @@
 
 #define _VERSION_ 0.05
 
+boolean _SETUPMODE_ = false;
+
 volatile char segmentData[] = "- NOMIDI -";
 const byte segCathodePins[] = {19, 20, 21, 22, 23, 24, 25, 26, 27, 38};
 const byte segAnodePins[] = {39, 40, 41, 30, 31, 28, 29, 34};
@@ -68,8 +70,12 @@ const int BUTTON0_X = 15;
 const int BUTTON0_INH = 7;
 volatile int BUTTON0_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int BUTTON0_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
+volatile long BUTTON0_PUSHTIME_START[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
+volatile long BUTTON0_PUSHTIME[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 
 const int BUTTON1_X = A4;
 const int BUTTON1_INH = 10;
 volatile int BUTTON1_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int BUTTON1_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
+volatile long BUTTON1_PUSHTIME_START[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
+volatile long BUTTON1_PUSHTIME[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
