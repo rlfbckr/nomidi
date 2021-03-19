@@ -25,7 +25,15 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 ![NOMIDI PCB](https://github.com/rlfbckr/nomidi/blob/1136a831244162e96c44ef483a0d44b69978a3aa/assets/images/nomidi_pcb.jpg)
 
 ## software / firmware
-- teensyduino 
+- arduino IDE
+- plus teensyduino
+
+## needed arduino libraries
+- OSCBundle
+- Chrono
+- MUX74HC4067
+- SevSeg ( Seven Segment Multiplexing Library ) 
+- NativeEthernet ( Teensy 4.1 )
 
 ## bill of materials
 [BOM](https://docs.google.com/spreadsheets/d/1EoTag_wGxFKfiME3yydL2qvFMf1TQeLivOXvCBYUS_A/edit#gid=0)
