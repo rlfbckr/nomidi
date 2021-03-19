@@ -1,12 +1,8 @@
-#define _VERSION_ 0.03
+#define _VERSION_ 0.05
 
-int segmentMax = 10;
-volatile int lastSegmentPos = 0;
-volatile int segmentPos = 0;
-volatile int segmentTic = 0;
-volatile char segmentData[] = "softmachin";
-const int segCathodePins[] = {19, 20, 21, 22, 23, 24, 25, 26, 27, 38};
-const int segAnodePins[] = {39, 40, 41, 30, 31, 28, 29, 34};
+volatile char segmentData[] = "- NOMIDI -";
+const byte segCathodePins[] = {19, 20, 21, 22, 23, 24, 25, 26, 27, 38};
+const byte segAnodePins[] = {39, 40, 41, 30, 31, 28, 29, 34};
 
 
 const int ledPins[] = {0, 1, 35, 11, 12, 13, 32, 33, 36, 37};
@@ -20,6 +16,7 @@ const int inputValueLowCut = 5;
 const int inputValueHighCut = 4090;
 const int inputHysteresisMax = 15;
 const int inputHysteresisMin = 1;
+
 const int ADDR_A = 2;
 const int ADDR_B = 3;
 const int ADDR_C = 4;
@@ -50,7 +47,6 @@ const int BUTTON0_X = 15;
 const int BUTTON0_INH = 7;
 volatile int BUTTON0_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int BUTTON0_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
-
 
 const int BUTTON1_X = A4;
 const int BUTTON1_INH = 10;
