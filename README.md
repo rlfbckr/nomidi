@@ -29,11 +29,11 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 - plus teensyduino
 
 ## needed arduino libraries
-- OSCBundle
-- Chrono
-- MUX74HC4067
-- SevSeg ( Seven Segment Multiplexing Library ) 
-- NativeEthernet ( Teensy 4.1 )
+- OSCBundle  *[install via package manager]*
+- Chrono  *[install via package manager]*
+- MUX74HC4067 *[install via package manager]*
+- SevSeg ( Seven Segment Multiplexing Library ) *[included in firmware sketch]*
+- NativeEthernet ( Teensy 4.1 ) *[comes with teensyduino]*
 
 ## bill of materials
 [BOM](https://docs.google.com/spreadsheets/d/1EoTag_wGxFKfiME3yydL2qvFMf1TQeLivOXvCBYUS_A/edit#gid=0)
