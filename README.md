@@ -32,7 +32,7 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 - OSCBundle  *[install via package manager]*
 - Chrono  *[install via package manager]*
 - MUX74HC4067 *[install via package manager]*
-- SevSeg ( Seven Segment Multiplexing Library ) *[included in firmware sketch]*
+- SevSeg ( Seven Segment Multiplexing Library ) *[modefied version included in firmware sketch]*
 - NativeEthernet ( Teensy 4.1 ) *[comes with teensyduino]*
 
 ## bill of materials
