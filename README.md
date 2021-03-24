@@ -31,7 +31,7 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 - Arduino IDE (Version 1.8.13) [(download)](https://www.arduino.cc/en/software)
 - Teensyduino (Version 1.53) [(download)](https://www.pjrc.com/teensy/td_download.html)
 
-## Needed Arduino libraries
+## Required Arduino libraries
 - OSCBundle  *[install via package manager]*
 - Chrono  *[install via package manager]*
 - MUX74HC4067 *[install via package manager]*
