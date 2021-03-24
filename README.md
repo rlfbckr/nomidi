@@ -25,8 +25,8 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 ![NOMIDI PCB](https://github.com/rlfbckr/nomidi/blob/1136a831244162e96c44ef483a0d44b69978a3aa/assets/images/nomidi_pcb.jpg)
 
 ## software / firmware
-- arduino IDE
-- plus teensyduino
+- Arduino IDE (Version 1.8.13) [(download)](https://www.arduino.cc/en/software)
+- Teensyduino (Version 1.53) [(download)] (https://www.pjrc.com/teensy/td_download.html)
 
 ## needed arduino libraries
 - OSCBundle  *[install via package manager]*
