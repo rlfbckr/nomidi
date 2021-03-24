@@ -18,7 +18,7 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
   - 10 x 1 white led (3mm)
 
 ## Interface
-- USB
+- USB SlipSerial
 - Ethernet
 
 ## PCB
@@ -38,3 +38,23 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 ## bill of materials
 [BOM](https://docs.google.com/spreadsheets/d/1EoTag_wGxFKfiME3yydL2qvFMf1TQeLivOXvCBYUS_A/edit#gid=0)
 
+## Firmware configuration
+
+NOMIDI can communicatte ether via Ethernet oder Serial (OSC over SLIPSerial). edit **firmware/nomidi_firmware/config.h***  
+
+### Use Serial ( OSC over SLIP Serial) for communication:
+```
+#define USE_SLIP_SERIAL
+```
+
+### Use Ethernet ( OSC over UDP) for communication:
+```
+#define USE_ETHERNET
+
+static byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFC, 0x88}; // hardware addres of your device
+static IPAddress myIP(10, 0, 0, 123); // ip address of the controller
+static IPAddress serverIP(10, 0, 0, 3); // ip addres of your laptop
+static int serverPort = 9013;
+static int incommingPort = 10013;
+
+```
