@@ -40,7 +40,7 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 
 ## Firmware configuration
 
-NOMIDI can communicatte ether via Ethernet oder Serial (OSC over SLIPSerial). edit **firmware/nomidi_firmware/config.h***  
+NOMIDI can communicatte ether via Ethernet oder Serial (OSC over SLIPSerial). edit **firmware/nomidi_firmware/config.h**  
 
 ### Use Serial ( OSC over SLIP Serial) for communication:
 ```
