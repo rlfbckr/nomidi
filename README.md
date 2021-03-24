@@ -26,7 +26,7 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 
 ## software / firmware
 - Arduino IDE (Version 1.8.13) [(download)](https://www.arduino.cc/en/software)
-- Teensyduino (Version 1.53) [(download)] (https://www.pjrc.com/teensy/td_download.html)
+- Teensyduino (Version 1.53) [(download)](https://www.pjrc.com/teensy/td_download.html)
 
 ## needed arduino libraries
 - OSCBundle  *[install via package manager]*
