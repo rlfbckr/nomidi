@@ -59,9 +59,6 @@ void readInputs() {
   for (int i = 0; i < 10 ; i++) {
     // FADER
     int tmp_fader = map(constrain((mux_fader.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
-
-
-
     if (abs(tmp_fader - FADER_VALUES[i]) >= FADER_HYS[i]) {
       FADER_VALUES[i] = tmp_fader;
       if (FADER_HYS[i] > inputHysteresisMin) {
@@ -107,28 +104,50 @@ void readInputs() {
     }
 
     if (BUTTON0_VALUES_LAST[i] == 1 && BUTTON0_VALUES[i] == 0) {
-      Serial.print("BUTTON0_PUSHTIME[");
-      Serial.print( i );
-      Serial.print("] = ");
+      //   Serial.print("BUTTON0_PUSHTIME[");
+      //   Serial.print( i );
+      //   Serial.print("] = ");
       BUTTON0_PUSHTIME[i] = millis() - BUTTON0_PUSHTIME_START[i];
-      Serial.println(BUTTON0_PUSHTIME[i]);
+      //   Serial.println(BUTTON0_PUSHTIME[i]);
     }
 
     if (BUTTON1_VALUES_LAST[i] == 1 && BUTTON1_VALUES[i] == 0) {
-      Serial.print("BUTTON1_PUSHTIME[");
-      Serial.print( i );
-      Serial.print("] = ");
+      //  Serial.print("BUTTON1_PUSHTIME[");
+      //  Serial.print( i );
+      //   Serial.print("] = ");
       BUTTON1_PUSHTIME[i] = millis() - BUTTON1_PUSHTIME_START[i];
-      Serial.println(BUTTON1_PUSHTIME[i]);
+      //   Serial.println(BUTTON1_PUSHTIME[i]);
     }
   }
 
   if (BUTTON0_PUSHTIME[0] > 2000 && BUTTON0_PUSHTIME[9] > 2000) {
-    Serial.println(" C O N F I G   M*O*D*E !!!");
+    //  Serial.println(" C O N F I G   M*O*D*E !!!");
     BUTTON0_PUSHTIME[0] = 0;
     BUTTON0_PUSHTIME[9] = 0;
     _SETUPMODE_ = !_SETUPMODE_;
+    if (!_SETUPMODE_) {
+      sprintf(segmentData, "- NOMIDI -");
+    }
   }
-
+  if (BUTTON0_PUSHTIME[1] > 10) {
+    //  Serial.println("BUTTON_SWI !!!");
+    BUTTON0_PUSHTIME[1] = 0;
+    BUTTON_SWI = true;
+  }
+  if (BUTTON0_PUSHTIME[2] > 10) {
+    //  Serial.println("BUTTON_PRE !!!");
+    BUTTON0_PUSHTIME[2] = 0;
+    BUTTON_PRE = true;
+  }
+  if (BUTTON0_PUSHTIME[3] > 10) {
+    // Serial.println("BUTTON_NXT !!!");
+    BUTTON0_PUSHTIME[3] = 0;
+    BUTTON_NXT = true;
+  }
+  if (BUTTON0_PUSHTIME[4] > 10) {
+    //   Serial.println("BUTTON_SEL !!!");
+    BUTTON0_PUSHTIME[4] = 0;
+    BUTTON_SEL = true;
+  }
   delayMicroseconds(10);
 }

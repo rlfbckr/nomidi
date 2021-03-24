@@ -93,59 +93,16 @@ void sendInputsOSC() {
     }
 
   }
+#ifdef USE_SLIP_SERIAL
+  SLIPSerial.beginPacket();
+  bndl.send(SLIPSerial);
+  SLIPSerial.endPacket();
+#endif
+#ifdef USE_ETHERNET
   Udp.beginPacket(serverIP, serverPort);
   bndl.send(Udp);
   Udp.endPacket();
+#endif
   bndl.empty();
-}
 
-
-void sendInputsAllOSC() {
-  if (Ethernet.linkStatus() == LinkON) {
-    OSCMessage msg0("/nm/fader");
-    for (int i = 0; i < 10; i++) {
-      msg0.add((int) FADER_VALUES[i]);
-    }
-    Udp.beginPacket(serverIP, serverPort);
-    msg0.send(Udp);
-    Udp.endPacket();
-    msg0.empty();
-
-    OSCMessage msg1("/nm/pot0");
-    for (int i = 0; i < 10; i++) {
-      msg1.add((int) POT0_VALUES[i]);
-    }
-    Udp.beginPacket(serverIP, serverPort);
-    msg1.send(Udp);
-    Udp.endPacket();
-    msg1.empty();
-
-    OSCMessage msg2("/nm/pot1");
-    for (int i = 0; i < 10; i++) {
-      msg2.add((int) POT1_VALUES[i]);
-    }
-    Udp.beginPacket(serverIP, serverPort);
-    msg2.send(Udp);
-    Udp.endPacket();
-    msg2.empty();
-
-
-    OSCMessage msg3("/nm/button0");
-    for (int i = 0; i < 10; i++) {
-      msg3.add((int) BUTTON0_VALUES[i]);
-    }
-    Udp.beginPacket(serverIP, serverPort);
-    msg3.send(Udp);
-    Udp.endPacket();
-    msg3.empty();
-
-    OSCMessage msg4("/nm/button1");
-    for (int i = 0; i < 10; i++) {
-      msg4.add((int) BUTTON1_VALUES[i]);
-    }
-    Udp.beginPacket(serverIP, serverPort);
-    msg4.send(Udp);
-    Udp.endPacket();
-    msg4.empty();
-  }
 }

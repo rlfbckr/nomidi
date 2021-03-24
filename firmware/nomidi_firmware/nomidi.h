@@ -18,12 +18,30 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <NativeEthernet.h>
+#include <NativeEthernetUdp.h>
+#include <OSCBundle.h>
+#include <Chrono.h>
+#include "SevSeg.h"
+#include "MUX74HC4067.h"
+#include "config.h"
+#include "animation.h"
 
 #define _VERSION_ 0.05
 
 boolean _SETUPMODE_ = false;
 
-volatile char segmentData[] = "- NOMIDI -";
+int setup_pos = 0;
+int setup_pos_max = 2;
+int setup_brighness = 60;
+
+boolean BUTTON_SWI = false;
+boolean BUTTON_PRE = false;
+boolean BUTTON_NXT  = false;
+boolean BUTTON_SEL = false;
+
+
+volatile char segmentData[] = "----------";
 const byte segCathodePins[] = {19, 20, 21, 22, 23, 24, 25, 26, 27, 38};
 const byte segAnodePins[] = {39, 40, 41, 30, 31, 28, 29, 34};
 

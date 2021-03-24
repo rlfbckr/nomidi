@@ -18,14 +18,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-#include <NativeEthernet.h>
-#include <NativeEthernetUdp.h>
-#include <OSCBundle.h>
-#include <Chrono.h>
-#include "SevSeg.h"
-#include "MUX74HC4067.h"
 #include "nomidi.h"
+
+
+#ifdef USE_SLIP_SERIAL
+#include <SLIPEncodedUSBSerial.h>
+SLIPEncodedUSBSerial SLIPSerial( thisBoardsSerialUSB );
+#endif
 
 /*
    Teensy 4.1
@@ -35,7 +34,7 @@
 
 */
 
-boolean DEBUG_OSC_MSG = false;
+
 volatile int readinputtick = 0;
 IntervalTimer readInputsTimer;
 IntervalTimer updateDisplayTimer;
@@ -50,22 +49,22 @@ MUX74HC4067 mux_button0(BUTTON0_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
 MUX74HC4067 mux_button1(BUTTON1_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
 
 
-
+#ifdef USE_ETHERNET
 EthernetUDP Udp;
-byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFC, 0x88};
-IPAddress myIP(10, 0, 0, 123); // contoller
-IPAddress serverIP(10, 0, 0, 3); // e.g maxmsp
-static int serverPort = 9013;
-static int incommingPort = 10013;
+#endif
 
 SevSeg sevseg;
 
 void setup() {
+#ifdef USE_SLIP_SERIAL
+  SLIPSerial.begin(115200);
+#else
   Serial.begin(115200);
   Serial.print("NOMIDI v");
   Serial.println(  _VERSION_);
-  analogReadResolution(12);
+#endif
 
+  analogReadResolution(12);
   mux_pot1.signalPin(POT1_X, INPUT, ANALOG);
   mux_pot0.signalPin(POT0_X, INPUT, ANALOG);
   mux_fader.signalPin(FADER_X, INPUT, ANALOG);
@@ -79,11 +78,11 @@ void setup() {
   bool disableDecPoint = false; // Use 'true' if your decimal point doesn't exist or isn't connected
 
   sevseg.begin(hardwareConfig, 10, segCathodePins, segAnodePins, resistorsOnSegments, updateWithDelays, leadingZeros, disableDecPoint);
-  sevseg.setBrightness(60);
-
-
+  sevseg.setBrightness(setup_brighness);
   analogReadAveraging(100);
+#ifdef USE_ETHERNET
   initEthernet();
+#endif
   updateDisplayTimer.begin(updateSevenSegment, 250);
   softPWMTimer.begin(updateSoftPWM, 100);
 }
@@ -101,6 +100,9 @@ void loop() {
     sendInputsOSC();
   }
 
+  drawAnimation();
+  
+#ifdef USE_ETHERNET
   OSCMessage msgIn;
   int msg_size;
   if ((msg_size = Udp.parsePacket()) > 0) {
@@ -113,6 +115,7 @@ void loop() {
       msgIn.route("/nm/sendall", OSCsendAll);
     }
   }
+#endif
 }
 
 void updateSevenSegment() {

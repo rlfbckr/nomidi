@@ -1,26 +1,26 @@
 /* SevSeg Library
- *
- * Copyright 2017 Dean Reading
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- *
- * This library allows an Arduino to easily display numbers and letters on a
- * 7-segment display without a separate 7-segment display controller.
- *
- * Direct any questions or suggestions to deanreading@hotmail.com
- * See the included readme for instructions.
- * https://github.com/DeanIsMe/SevSeg
- */
+
+   Copyright 2017 Dean Reading
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+   This library allows an Arduino to easily display numbers and letters on a
+   7-segment display without a separate 7-segment display controller.
+
+   Direct any questions or suggestions to deanreading@hotmail.com
+   See the included readme for instructions.
+   https://github.com/DeanIsMe/SevSeg
+*/
 
 #include "SevSeg.h"
 
@@ -30,6 +30,13 @@
 #define ASTERISK_IDX 39
 #define UNDERSCORE_IDX 40
 #define TILDE_IDX 41
+#define ACUTE_IDX 42
+#define BACKSLASH_IDX 43
+#define SLASH_IDX 44
+#define COMMA_IDX 45
+#define PIPE_IDX 46
+#define HASH_IDX 47
+
 static const long powersOf10[] = {
   1, // 10^0
   10,
@@ -97,9 +104,15 @@ static const byte digitCodeMap[] = {
   B00000000, // 32  ' '  BLANK
   B01000000, // 45  '-'  DASH
   B10000000, // 46  '.'  PERIOD
-  B01100011, // 42 '*'  DEGREE ..
-  B00001000, // ?? '_'  UNDERSCORE ..
-  B01010010, // ?? '~'  TILDE ..
+  B01100011, // 42  '*'  DEGREE ..
+  B00001000, // ??  '_'  UNDERSCORE ..
+  B01010010, // ??  '~'  TILDE ..
+  B00000001, // ??  '^'  ACUTE ..
+  B00000011, // ??  '\'  BACKSLASH: upper right corner ..
+  B00001100, // ??  '/'  SLASH: lower right corner ..
+  B00011000, // ??  ','  KOMMA: lower left corner ..
+  B00110000, // ??  '|'  PIPE
+  B00100001, // ??  '#'  DEGREE: upper left corner
 };
 
 // Constant pointers to constant data
@@ -487,12 +500,30 @@ void SevSeg::setChars(char str[]) {
     }
     else if (ch == '*') {
       digitCodes[digitNum] = digitCodeMap[ASTERISK_IDX];
-    } 
+    }
     else if (ch == '_') {
       digitCodes[digitNum] = digitCodeMap[UNDERSCORE_IDX];
     }
-        else if (ch == '~') {
+    else if (ch == '~') {
       digitCodes[digitNum] = digitCodeMap[TILDE_IDX];
+    }
+    else if (ch == '^') {
+      digitCodes[digitNum] = digitCodeMap[ACUTE_IDX];
+    }
+    else if (ch == '\\') {
+      digitCodes[digitNum] = digitCodeMap[BACKSLASH_IDX];
+    }
+    else if (ch == '/') {
+      digitCodes[digitNum] = digitCodeMap[SLASH_IDX];
+    }
+    else if (ch == ',') {
+      digitCodes[digitNum] = digitCodeMap[COMMA_IDX];
+    }
+    else if (ch == '|') {
+      digitCodes[digitNum] = digitCodeMap[PIPE_IDX];
+    }
+    else if (ch == '#') {
+      digitCodes[digitNum] = digitCodeMap[HASH_IDX];
     }
     else {
       // Every unknown character is shown as a dash
