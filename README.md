@@ -8,7 +8,7 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
 **PLEAYSE NOTE:** NOMIDI is OSC based in cannot be used in an "MIDI Environment". I can send/reicive only signals form OSC enabled Software and Hardware. e.g. MaxMSP, Supercollider, PureData, Processing, OpenFrameworks, monome norns, Abelton Live and many more.
  
 
-## control elements
+## Control elements
 * inputs:
   - 10 x 2 knobs (potentiometer ALPS)
   - 10 x 2 pushbuttons
@@ -17,30 +17,33 @@ I build this controller out of frustration that [MIDI controllers](https://en.wi
   - 10 x 1 seven-segment element (13,5mm)
   - 10 x 1 white led (3mm)
 
-## Interface
+## Interface / Connection
 - USB SlipSerial
+**or**
 - Ethernet
 
-## PCB
+## PCB (Printed circuit board)
 ![NOMIDI PCB](https://github.com/rlfbckr/nomidi/blob/1136a831244162e96c44ef483a0d44b69978a3aa/assets/images/nomidi_pcb.jpg)
 
-## software / firmware
+## Software
+*For flashing the firmware on the Teensy board these software compnents are needed:*
+
 - Arduino IDE (Version 1.8.13) [(download)](https://www.arduino.cc/en/software)
 - Teensyduino (Version 1.53) [(download)](https://www.pjrc.com/teensy/td_download.html)
 
-## needed arduino libraries
+## Needed Arduino libraries
 - OSCBundle  *[install via package manager]*
 - Chrono  *[install via package manager]*
 - MUX74HC4067 *[install via package manager]*
 - SevSeg ( Seven Segment Multiplexing Library ) *[modefied version included in firmware sketch]*
 - NativeEthernet ( Teensy 4.1 ) *[comes with teensyduino]*
 
-## bill of materials
+## Bill of Materials
 [BOM](https://docs.google.com/spreadsheets/d/1EoTag_wGxFKfiME3yydL2qvFMf1TQeLivOXvCBYUS_A/edit#gid=0)
 
 ## Firmware configuration
 
-NOMIDI can communicatte ether via Ethernet oder Serial (OSC over SLIPSerial). edit **firmware/nomidi_firmware/config.h**  
+NOMIDI can communicate ether via *Ethernet* oder *Serial* (OSC over SLIPSerial). edit **firmware/nomidi_firmware/config.h**  
 
 ### Use Serial ( OSC over SLIP Serial) for communication:
 ```
