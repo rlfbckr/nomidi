@@ -61,3 +61,11 @@ static int serverPort = 9013;
 static int incommingPort = 10013;
 
 ```
+
+## Teensy Settings
+```
+Borad:      Teensy 4.1
+USB Type:   USB Serial
+CPU Speed:  600 Mhz
+
+```
