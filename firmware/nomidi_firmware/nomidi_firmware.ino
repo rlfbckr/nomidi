@@ -24,8 +24,7 @@
 #include <SLIPEncodedUSBSerial.h>
 SLIPEncodedUSBSerial SLIPSerial( SerialUSB );
 #endif
-//#include <SLIPEncodedSerial.h>
-// SLIPEncodedSerial SLIPSerial(Serial1);
+
 /*
   Borad:      Teensy 4.1
   USB Type:   USB Serial

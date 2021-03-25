@@ -40,6 +40,30 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-158",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 110.75913925051691, 452.990290343761444, 67.0, 22.0 ],
+					"text" : "abcdefgahi"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-159",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 144.0, 413.736632625788275, 75.0, 22.0 ],
+					"text" : "1234567890"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-152",
 					"maxclass" : "newobj",
 					"numinlets" : 5,
@@ -52,25 +76,13 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-79",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 21.563110709190369, 726.686601688861856, 211.0, 22.0 ],
-					"text" : "bang"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-39",
 					"maxclass" : "button",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 126.563110709190369, 627.717228393286291, 24.0, 24.0 ]
+					"patching_rect" : [ 118.563110709190369, 161.310688436031342, 24.0, 24.0 ]
 				}
 
 			}
@@ -81,7 +93,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 126.563110709190369, 593.405322334229595, 84.0, 22.0 ],
+					"patching_rect" : [ 118.563110709190369, 126.998782376974646, 84.0, 22.0 ],
 					"text" : "r nomidi_send"
 				}
 
@@ -155,7 +167,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 21.563110709190369, 627.717228393286291, 24.0, 24.0 ]
+					"patching_rect" : [ 13.563110709190369, 161.310688436031342, 24.0, 24.0 ]
 				}
 
 			}
@@ -166,7 +178,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 21.563110709190369, 593.405322334229595, 97.0, 22.0 ],
+					"patching_rect" : [ 13.563110709190369, 126.998782376974646, 97.0, 22.0 ],
 					"text" : "r nomidi_receive"
 				}
 
@@ -2909,7 +2921,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-43",
@@ -4293,6 +4304,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-48", 0 ],
+					"source" : [ "obj-158", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-48", 0 ],
+					"source" : [ "obj-159", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-110", 0 ],
 					"source" : [ "obj-16", 0 ]
 				}
@@ -4756,15 +4781,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-39", 0 ],
-					"order" : 1,
-					"source" : [ "obj-58", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-79", 1 ],
-					"order" : 0,
 					"source" : [ "obj-58", 0 ]
 				}
 
