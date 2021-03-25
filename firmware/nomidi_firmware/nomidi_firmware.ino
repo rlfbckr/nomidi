@@ -19,38 +19,12 @@
 */
 
 #include "nomidi.h"
-
-#ifdef USE_SLIP_SERIAL
-#include <SLIPEncodedUSBSerial.h>
-SLIPEncodedUSBSerial SLIPSerial( SerialUSB );
-#endif
-
 /*
   Borad:      Teensy 4.1
   USB Type:   USB Serial
   CPU Speed:  600 Mhz
 */
 
-
-volatile int readinputtick = 0;
-//IntervalTimer readInputsTimer;
-IntervalTimer updateDisplayTimer;
-IntervalTimer softPWMTimer;
-Chrono sendOSC;
-Chrono readInputsChrono;
-
-MUX74HC4067 mux_pot1(POT1_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
-MUX74HC4067 mux_pot0(POT0_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
-MUX74HC4067 mux_fader(FADER_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
-MUX74HC4067 mux_button0(BUTTON0_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
-MUX74HC4067 mux_button1(BUTTON1_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
-
-
-#ifdef USE_ETHERNET
-EthernetUDP Udp;
-#endif
-
-SevSeg sevseg;
 
 void setup() {
 #ifdef USE_SLIP_SERIAL
@@ -122,7 +96,7 @@ void readUdpOsc() {
       msgIn.route("/nm/set7seg", OSCset7Seg);
       msgIn.route("/nm/set7segall", OSCset7SegAll);
       msgIn.route("/nm/setled", OSCsetLED);
-      msgIn.route("/nm/sendall", OSCsendAll);
+    //  msgIn.route("/nm/sendall", OSCsendAll);
     }
   }
 }
@@ -142,7 +116,7 @@ void readSerialOSC() {
       msgIn.route("/nm/set7seg", OSCset7Seg);
       msgIn.route("/nm/set7segall", OSCset7SegAll);
       msgIn.route("/nm/setled", OSCsetLED);
-      msgIn.route("/nm/sendall", OSCsendAll);
+     // msgIn.route("/nm/sendall", OSCsendAll);
 
     }
   }

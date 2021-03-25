@@ -99,3 +99,29 @@ volatile int BUTTON1_VALUES_LAST_SEND[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1
 volatile int BUTTON1_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 volatile long BUTTON1_PUSHTIME_START[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile long BUTTON1_PUSHTIME[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
+
+
+#ifdef USE_SLIP_SERIAL
+#include <SLIPEncodedUSBSerial.h>
+SLIPEncodedUSBSerial SLIPSerial( SerialUSB );
+#endif
+
+
+
+IntervalTimer updateDisplayTimer;
+IntervalTimer softPWMTimer;
+Chrono sendOSC;
+Chrono readInputsChrono;
+
+MUX74HC4067 mux_pot1(POT1_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+MUX74HC4067 mux_pot0(POT0_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+MUX74HC4067 mux_fader(FADER_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+MUX74HC4067 mux_button0(BUTTON0_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+MUX74HC4067 mux_button1(BUTTON1_INH, ADDR_A, ADDR_B, ADDR_C, ADDR_D);
+
+
+#ifdef USE_ETHERNET
+EthernetUDP Udp;
+#endif
+
+SevSeg sevseg;

@@ -17,7 +17,7 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+/*
 void OSCsendAll(OSCMessage &msg, int addrOffset) {
 #ifdef DEBUG_OSC_MSG
   Serial.print("> /nm/sendAll ");
@@ -32,6 +32,7 @@ void OSCsendAll(OSCMessage &msg, int addrOffset) {
   //interrupts();
 }
 
+*/
 
 
 void OSCsetLED(OSCMessage &msg, int addrOffset) {
