@@ -67,5 +67,45 @@ static int incommingPort = 10013;
 Borad:      Teensy 4.1
 USB Type:   USB Serial
 CPU Speed:  600 Mhz
+```
 
+## OSC messages
+
+### NOMDI -> software
+
+Potentiometer 1 (top row)
+```
+/nm/p0 [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095]
+```
+Potentiometer 0 (bottom row)
+```
+/nm/p1 [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095]
+```
+Button 1 (top row)
+```
+/nm/p1 [0/1] [0/1] [0/1] [0/1] [0/1] [0/1] [0/1] [0/1] [0/1] [0/1]
+```
+Fader
+```
+/nm/f [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095] [0-4095]
+```
+Button 0 (bottom row)
+```
+/nm/p0 [0/1] [0/1] [0/1] [0/1] [0/1] [0/1] [0/1] [0/1] [0/1] [0/1]
+```
+
+
+### software -> NOMIDI
+LED (single)
+```
+/nm/setled <pos 0-9> <brightness 0-100>
+```
+7Segment (single segment)
+```
+/nm/set7set <pos 0-9> <character>
+```
+
+7Segment (all segments)
+```
+/nm/set7segall <character> <character> <character> <character> <character> <character> <character> <character> <character> <character>
 ```
