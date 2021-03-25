@@ -96,7 +96,6 @@ void readUdpOsc() {
       msgIn.route("/nm/set7seg", OSCset7Seg);
       msgIn.route("/nm/set7segall", OSCset7SegAll);
       msgIn.route("/nm/setled", OSCsetLED);
-    //  msgIn.route("/nm/sendall", OSCsendAll);
     }
   }
 }

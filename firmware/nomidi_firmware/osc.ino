@@ -17,23 +17,6 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-/*
-void OSCsendAll(OSCMessage &msg, int addrOffset) {
-#ifdef DEBUG_OSC_MSG
-  Serial.print("> /nm/sendAll ");
-#endif
-  //noInterrupts();
-  for (int i = 0; i < 10; i++) {
-    FADER_VALUES_LAST[i] = -111;
-    POT0_VALUES_LAST[i] = -111;
-    POT1_VALUES_LAST[i] = -111;
-  }
-  sendInputsOSC();
-  //interrupts();
-}
-
-*/
-
 
 void OSCsetLED(OSCMessage &msg, int addrOffset) {
 #ifdef DEBUG_OSC_MSG
