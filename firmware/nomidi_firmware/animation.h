@@ -1,6 +1,6 @@
 
 boolean animation = true;
-int animation_speed = 80;
+int animation_speed = 20;
 int animation_frame = 0;
 int animation_last_frame = 0;
 int animation_length = 74;

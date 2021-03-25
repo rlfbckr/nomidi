@@ -19,7 +19,9 @@
 */
 
 void OSCsendAll(OSCMessage &msg, int addrOffset) {
-  if (DEBUG_OSC_MSG) Serial.print("> /nm/sendAll ");
+#ifdef DEBUG_OSC_MSG
+  Serial.print("> /nm/sendAll ");
+#endif
   //noInterrupts();
   for (int i = 0; i < 10; i++) {
     FADER_VALUES_LAST[i] = -111;
@@ -33,29 +35,33 @@ void OSCsendAll(OSCMessage &msg, int addrOffset) {
 
 
 void OSCsetLED(OSCMessage &msg, int addrOffset) {
-  if (DEBUG_OSC_MSG) Serial.print("> /nm/setLED ");
+#ifdef DEBUG_OSC_MSG
+  Serial.print("> /nm/setLED ");
+#endif
   int pos = msg.getInt(0);
   int intensity = msg.getInt(1);
   if (pos >= 0 && pos < 10) {
-    if (DEBUG_OSC_MSG) {
-      Serial.print(pos);
-      Serial.print(" ");
-      Serial.println(intensity);
-    }
+#ifdef DEBUG_OSC_MSG
+    Serial.print(pos);
+    Serial.print(" ");
+    Serial.println(intensity);
+#endif
     ledIntesity[pos] = intensity;
   }
 }
 
 void OSCset7Seg(OSCMessage &msg, int addrOffset) {
-  if (DEBUG_OSC_MSG) Serial.print("> /nm/set7seg ");
+#ifdef DEBUG_OSC_MSG
+  Serial.print("> /nm/set7seg ");
+#endif
   int pos = msg.getInt(0);
   char letter = (char) msg.getInt(1);
   if (pos >= 0 && pos < 10) {
-    if (DEBUG_OSC_MSG) {
-      Serial.print(pos);
-      Serial.print(" ");
-      Serial.println(letter);
-    }
+#ifdef DEBUG_OSC_MSG
+    Serial.print(pos);
+    Serial.print(" ");
+    Serial.println(letter);
+#endif
     segmentData[pos] = letter;
   }
 }
@@ -83,15 +89,14 @@ void sendInputsOSC() {
       bndl.add("/nm/p1").add((int) i).add((int) POT1_VALUES[i]);
       POT1_VALUES_LAST[i] = POT1_VALUES[i];
     }
-    if (BUTTON0_VALUES[i] != BUTTON0_VALUES_LAST[i]) {
+    if (BUTTON0_VALUES[i] != BUTTON0_VALUES_LAST_SEND[i]) {
       bndl.add("/nm/b0").add((int) i).add((int) BUTTON0_VALUES[i]);
-      BUTTON0_VALUES_LAST[i] = BUTTON0_VALUES[i];
+      BUTTON0_VALUES_LAST_SEND[i] = BUTTON0_VALUES[i];
     }
-    if (BUTTON1_VALUES[i] != BUTTON1_VALUES_LAST[i]) {
+    if (BUTTON1_VALUES[i] != BUTTON1_VALUES_LAST_SEND[i]) {
       bndl.add("/nm/b1").add((int) i).add((int) BUTTON1_VALUES[i]);
-      BUTTON1_VALUES_LAST[i] = BUTTON1_VALUES[i];
+      BUTTON1_VALUES_LAST_SEND[i] = BUTTON1_VALUES[i];
     }
-
   }
 #ifdef USE_SLIP_SERIAL
   SLIPSerial.beginPacket();

@@ -18,6 +18,12 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+void initLED() {
+ for (int i = 0; i < 10; i++) {
+ pinMode(ledPins[i],OUTPUT);
+ }
+}
+
 void updateSoftPWM() {
   for (int i = 0; i < 10; i++) {
     if ((softPWMtic % softPWMres) < ledIntesity[i]) {

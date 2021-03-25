@@ -20,23 +20,21 @@
 
 #include "nomidi.h"
 
-
 #ifdef USE_SLIP_SERIAL
 #include <SLIPEncodedUSBSerial.h>
-SLIPEncodedUSBSerial SLIPSerial( thisBoardsSerialUSB );
+SLIPEncodedUSBSerial SLIPSerial( SerialUSB );
 #endif
-
+//#include <SLIPEncodedSerial.h>
+// SLIPEncodedSerial SLIPSerial(Serial1);
 /*
-   Teensy 4.1
-   Settings
-   CPU Speed: 600 Mhz
-   USB-Type:  Serial
-
+  Borad:      Teensy 4.1
+  USB Type:   USB Serial
+  CPU Speed:  600 Mhz
 */
 
 
 volatile int readinputtick = 0;
-IntervalTimer readInputsTimer;
+//IntervalTimer readInputsTimer;
 IntervalTimer updateDisplayTimer;
 IntervalTimer softPWMTimer;
 Chrono sendOSC;
@@ -57,7 +55,7 @@ SevSeg sevseg;
 
 void setup() {
 #ifdef USE_SLIP_SERIAL
-  SLIPSerial.begin(115200);
+  SLIPSerial.begin(1000000);
 #else
   Serial.begin(115200);
   Serial.print("NOMIDI v");
@@ -79,7 +77,9 @@ void setup() {
 
   sevseg.begin(hardwareConfig, 10, segCathodePins, segAnodePins, resistorsOnSegments, updateWithDelays, leadingZeros, disableDecPoint);
   sevseg.setBrightness(setup_brighness);
+
   analogReadAveraging(100);
+  initLED();
 #ifdef USE_ETHERNET
   initEthernet();
 #endif
@@ -101,8 +101,19 @@ void loop() {
   }
 
   drawAnimation();
-  
+
 #ifdef USE_ETHERNET
+  readUdpOsc();
+#endif
+
+#ifdef USE_SLIP_SERIAL
+  readSerialOSC();
+#endif
+
+}
+
+#ifdef USE_ETHERNET
+void readUdpOsc() {
   OSCMessage msgIn;
   int msg_size;
   if ((msg_size = Udp.parsePacket()) > 0) {
@@ -115,7 +126,35 @@ void loop() {
       msgIn.route("/nm/sendall", OSCsendAll);
     }
   }
+}
 #endif
+
+#ifdef USE_SLIP_SERIAL
+void readSerialOSC() {
+  if (SLIPSerial.available()) {
+    OSCBundle msgIn;
+
+    int size;
+    while (!SLIPSerial.endofPacket())
+      if ((size = SLIPSerial.available()) > 0) {
+        while (size--) msgIn.fill(SLIPSerial.read());
+      }
+    if (!msgIn.hasError()) {
+      msgIn.route("/nm/set7seg", OSCset7Seg);
+      msgIn.route("/nm/set7segall", OSCset7SegAll);
+      msgIn.route("/nm/setled", OSCsetLED);
+      msgIn.route("/nm/sendall", OSCsendAll);
+
+    }
+  }
+}
+#endif
+
+void action(OSCMessage &msg, int addrOffset) {
+  //digitalWrite(ledPins[msg.getInt(0)], HIGH);
+  ledIntesity[msg.getInt(0)] = 100;
+  delay(100);
+  ledIntesity[msg.getInt(0)] = 0;
 }
 
 void updateSevenSegment() {

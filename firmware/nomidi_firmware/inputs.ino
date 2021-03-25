@@ -77,10 +77,6 @@ void readInputs() {
   delayMicroseconds(10);
 
   for (int i = 0; i < 10 ; i++) {
-    // BUTTON0_PUSHTIME[i] = 0;
-    //  BUTTON1_PUSHTIME[i] = 0;
-  }
-  for (int i = 0; i < 10 ; i++) {
     BUTTON1_VALUES_LAST[i] = BUTTON1_VALUES[i];
     BUTTON0_VALUES_LAST[i] = BUTTON0_VALUES[i];
     if (mux_button0.read(9 - i) > 10) {

@@ -25,7 +25,7 @@
    have a look at examples/nonidi_slipOSC_demo.maxmsp
 */
 
-// #define USE_SLIP_SERIAL
+#define USE_SLIP_SERIAL
 
 /*
    USE_ETHERNET
@@ -34,7 +34,7 @@
    have a look at examples/nonidi_OSC_demo.maxmsp
 */
 
-#define USE_ETHERNET
+//#define USE_ETHERNET
 
 /*
    Ethernet IP Configuration
@@ -46,4 +46,4 @@ static IPAddress serverIP(10, 0, 0, 3); // ip addres of your laptop
 static int serverPort = 9013;
 static int incommingPort = 10013;
 
-boolean DEBUG_OSC_MSG = false;
+// #define DEBUG_OSC_MSG

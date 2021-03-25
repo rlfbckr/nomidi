@@ -27,7 +27,7 @@
 #include "config.h"
 #include "animation.h"
 
-#define _VERSION_ 0.05
+#define _VERSION_ 0.06
 
 boolean _SETUPMODE_ = false;
 
@@ -87,6 +87,7 @@ volatile long FADER_HYS_LAST_CHANGE[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 const int BUTTON0_X = 15;
 const int BUTTON0_INH = 7;
 volatile int BUTTON0_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
+volatile int BUTTON0_VALUES_LAST_SEND[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int BUTTON0_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 volatile long BUTTON0_PUSHTIME_START[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile long BUTTON0_PUSHTIME[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
@@ -94,6 +95,7 @@ volatile long BUTTON0_PUSHTIME[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 const int BUTTON1_X = A4;
 const int BUTTON1_INH = 10;
 volatile int BUTTON1_VALUES_LAST[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
+volatile int BUTTON1_VALUES_LAST_SEND[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile int BUTTON1_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 volatile long BUTTON1_PUSHTIME_START[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 volatile long BUTTON1_PUSHTIME[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
