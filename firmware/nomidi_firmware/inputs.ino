@@ -20,10 +20,13 @@
 
 
 void readInputs() {
+  //  delayMicroseconds(20);
   for (int i = 0; i < 10 ; i++) {
     // int i = readinputtick % 10;
     // POT 0
+    // POT0_RAW[i] = 1000; //(POT0_RAW[i] * (1.0 - inputValueSmoothing) + (mux_pot0.read(9 - i) - inputValueSmoothing));
     int tmp_pot0 = map(constrain((mux_pot0.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
+    //  int tmp_pot0 = map(constrain((POT0_RAW[i] * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
     if (abs(tmp_pot0 - POT0_VALUES[i]) >= POT0_HYS[i]) {
       POT0_VALUES[i] = tmp_pot0;
       if (POT0_HYS[i] > inputHysteresisMin) {
@@ -31,7 +34,7 @@ void readInputs() {
         POT0_HYS_LAST_CHANGE[i] = millis();
       }
     }
-    if ((millis() - POT0_HYS_LAST_CHANGE[i]) > 100) {
+    if ((millis() - POT0_HYS_LAST_CHANGE[i]) > inputHysteresisIntervall) {
       if (POT0_HYS[i] < inputHysteresisMax) {
         POT0_HYS[i]++;
       }
@@ -41,7 +44,10 @@ void readInputs() {
   delayMicroseconds(20);
   for (int i = 0; i < 10 ; i++) {
     // POT 1
-    int tmp_pot1 = map(constrain((mux_pot1.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
+    POT1_RAW[i] = (POT1_RAW[i] * (1.0 - inputValueSmoothing) + (mux_pot1.read(9 - i) - inputValueSmoothing));
+    int tmp_pot1 = map(constrain((POT1_RAW[i] * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
+
+    //  int tmp_pot1 = map(constrain((mux_pot1.read(9 - i) * inputValueGain), inputValueLowCut , inputValueHighCut), inputValueLowCut , inputValueHighCut, 0 , 4095);
     if (abs(tmp_pot1 - POT0_VALUES[i]) >= POT1_HYS[i]) {
       POT1_VALUES[i] = tmp_pot1;
       if (POT0_HYS[i] > inputHysteresisMin) {
@@ -49,7 +55,7 @@ void readInputs() {
         POT1_HYS_LAST_CHANGE[i] = millis();
       }
     }
-    if ((millis() - POT1_HYS_LAST_CHANGE[i]) > 100) {
+    if ((millis() - POT1_HYS_LAST_CHANGE[i]) > inputHysteresisIntervall) {
       if (POT1_HYS[i] < inputHysteresisMax) {
         POT1_HYS[i]++;
       }
@@ -66,7 +72,7 @@ void readInputs() {
         FADER_HYS_LAST_CHANGE[i] = millis();
       }
     }
-    if ((millis() - FADER_HYS_LAST_CHANGE[i]) > 100) {
+    if ((millis() - FADER_HYS_LAST_CHANGE[i]) > inputHysteresisIntervall) {
       if (FADER_HYS[i] < inputHysteresisMax) {
         FADER_HYS[i]++;
       }
@@ -100,19 +106,19 @@ void readInputs() {
     }
 
     if (BUTTON0_VALUES_LAST[i] == 1 && BUTTON0_VALUES[i] == 0) {
-      //   Serial.print("BUTTON0_PUSHTIME[");
-      //   Serial.print( i );
-      //   Serial.print("] = ");
+      Serial.print("BUTTON0_PUSHTIME[");
+      Serial.print( i );
+      Serial.print("] = ");
       BUTTON0_PUSHTIME[i] = millis() - BUTTON0_PUSHTIME_START[i];
-      //   Serial.println(BUTTON0_PUSHTIME[i]);
+      Serial.println(BUTTON0_PUSHTIME[i]);
     }
 
     if (BUTTON1_VALUES_LAST[i] == 1 && BUTTON1_VALUES[i] == 0) {
-      //  Serial.print("BUTTON1_PUSHTIME[");
-      //  Serial.print( i );
-      //   Serial.print("] = ");
+      Serial.print("BUTTON1_PUSHTIME[");
+      Serial.print( i );
+      Serial.print("] = ");
       BUTTON1_PUSHTIME[i] = millis() - BUTTON1_PUSHTIME_START[i];
-      //   Serial.println(BUTTON1_PUSHTIME[i]);
+      Serial.println(BUTTON1_PUSHTIME[i]);
     }
   }
 
@@ -145,5 +151,6 @@ void readInputs() {
     BUTTON0_PUSHTIME[4] = 0;
     BUTTON_SEL = true;
   }
+
   delayMicroseconds(10);
 }

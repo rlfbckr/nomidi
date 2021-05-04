@@ -51,12 +51,13 @@ volatile int ledIntesity[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 volatile int softPWMtic = 0;
 volatile int softPWMres = 100;
 
-const float inputValueSmoothing = 0.2; // the smaller the smoother
+const float inputValueSmoothing = 0.5; // 0.2 ok the smaller the smoother
 const float inputValueGain = 1.003;
 const int inputValueLowCut = 5;
 const int inputValueHighCut = 4090;
 const int inputHysteresisMax = 15;
-const int inputHysteresisMin = 1;
+const int inputHysteresisMin = 1; // 1
+const int inputHysteresisIntervall = 50;
 
 const int ADDR_A = 2;
 const int ADDR_B = 3;
@@ -65,6 +66,7 @@ const int ADDR_D = 5;
 
 const int POT1_X = A3;
 const int POT1_INH = 9;
+volatile float POT1_RAW[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 volatile int POT1_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 volatile int POT1_VALUES_LAST[] = { -111 , -111, -111, -111, -111, -111, -111, -111, -111, -111};
 volatile int POT1_HYS[] = { inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax };
@@ -72,6 +74,7 @@ volatile long POT1_HYS_LAST_CHANGE[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 const int POT0_X = A2;
 const int POT0_INH = 8;
+volatile double POT0_RAW[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 volatile int POT0_VALUES[] = { 0 , 0, 0, 0, 0, 0 , 0, 0, 0, 0};
 volatile int POT0_VALUES_LAST[] = { -111 , -111, -111, -111, 111, 111 , -111, -111, -111, -111};
 volatile int POT0_HYS[] = { inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax, inputHysteresisMax };
@@ -105,8 +108,6 @@ volatile long BUTTON1_PUSHTIME[] = { -1 , -1, -1, -1, -1, -1 , -1, -1, -1, -1};
 #include <SLIPEncodedUSBSerial.h>
 SLIPEncodedUSBSerial SLIPSerial( SerialUSB );
 #endif
-
-
 
 IntervalTimer updateDisplayTimer;
 IntervalTimer softPWMTimer;

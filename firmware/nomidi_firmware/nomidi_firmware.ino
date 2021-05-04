@@ -1,3 +1,5 @@
+#include <Esplora.h>
+
 /*
   This file is part of
   NOMIDI - A OSC based performance controller
@@ -35,9 +37,9 @@ void setup() {
   Serial.println(  _VERSION_);
 #endif
 
-  analogReadResolution(12);
-  mux_pot1.signalPin(POT1_X, INPUT, ANALOG);
+
   mux_pot0.signalPin(POT0_X, INPUT, ANALOG);
+  mux_pot1.signalPin(POT1_X, INPUT, ANALOG);
   mux_fader.signalPin(FADER_X, INPUT, ANALOG);
   mux_button0.signalPin(BUTTON0_X, INPUT, ANALOG);
   mux_button1.signalPin(BUTTON1_X, INPUT, ANALOG);
@@ -50,8 +52,8 @@ void setup() {
 
   sevseg.begin(hardwareConfig, 10, segCathodePins, segAnodePins, resistorsOnSegments, updateWithDelays, leadingZeros, disableDecPoint);
   sevseg.setBrightness(setup_brighness);
-
-  analogReadAveraging(100);
+  analogReadResolution(12);
+  analogReadAveraging(200); // 100 ok
   initLED();
 #ifdef USE_ETHERNET
   initEthernet();
@@ -115,7 +117,7 @@ void readSerialOSC() {
       msgIn.route("/nm/set7seg", OSCset7Seg);
       msgIn.route("/nm/set7segall", OSCset7SegAll);
       msgIn.route("/nm/setled", OSCsetLED);
-     // msgIn.route("/nm/sendall", OSCsendAll);
+      // msgIn.route("/nm/sendall", OSCsendAll);
 
     }
   }
