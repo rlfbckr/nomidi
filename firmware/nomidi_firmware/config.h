@@ -25,7 +25,7 @@
    have a look at examples/nonidi_slipOSC_demo.maxmsp
 */
 
-#define USE_SLIP_SERIAL
+//#define USE_SLIP_SERIAL
 
 /*
    USE_ETHERNET
@@ -34,7 +34,7 @@
    have a look at examples/nonidi_OSC_demo.maxmsp
 */
 
-//#define USE_ETHERNET
+#define USE_ETHERNET
 
 /*
    Ethernet IP Configuration
